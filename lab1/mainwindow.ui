@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>306</width>
+    <height>409</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>306</width>
+    <height>319</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>16777215</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Calculator</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI';
+    border: none;
+}
+QLabel#displayPanel {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 10px 15px;
+    font-size: 28px;
+    font-weight: 500;
+    color: #2c3e50;
+    min-height: 60px;
+    max-height: 60px;
+    margin-bottom: 15px;
+}
+
+QPushButton {
+    background-color: #ffffff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+QPushButton:hover {
+    background-color: #f8f9fa;
+    border-color: #3490cd;
+}
+
+/* Эффекты при нажатии */
+QPushButton:pressed {
+    background-color: #e9ecef;
+}
+
+/* Стиль для цифровых кнопок */
+QPushButton[buttonGroup=&quot;numberGroup&quot;] {
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+QPushButton[buttonGroup=&quot;numberGroup&quot;]:hover {
+    background-color: #f1f3f5;
+    border-color: #adb5bd;
+}
+
+/* Стиль для кнопок операций */
+QPushButton[buttonGroup=&quot;actionGroup&quot;] {
+    background-color: #e9ecef;
+    color: #3490cd;
+    font-weight: 700;
+}
+
+QPushButton[buttonGroup=&quot;actionGroup&quot;]:hover {
+    background-color: #dee2e6;
+    border-color: #3490cd;
+}
+
+/* Стиль для кнопки равно */
+QPushButton#actionCalc {
+    background-color: #3490cd;
+    color: #ffffff;
+    border: 2px solid #3490cd;
+    font-weight: 700;
+}
+
+QPushButton#actionCalc:hover {
+    background-color: #2c7dbd;
+    border-color: #2c7dbd;
+}
+
+QPushButton#actionCalc:pressed {
+    background-color: #256aad;
+}
+
+/* Стиль для кнопки очистки */
+QPushButton#actionClear {
+    background-color: #ff6b6b;
+    color: #ffffff;
+    border: 2px solid #ff6b6b;
+    font-weight: 600;
+}
+
+QPushButton#actionClear:hover {
+    background-color: #fa5252;
+    border-color: #fa5252;
+}
+
+QPushButton#actionClear:pressed {
+    background-color: #e03131;
+}
+
+/* Стиль для специальных кнопок (Del, %, +/-) */
+QPushButton#actionDel,
+QPushButton#actionPercent,
+QPushButton#actionSign {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+QPushButton#actionDel:hover,
+QPushButton#actionPercent:hover,
+QPushButton#actionSign:hover {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* Стиль для кнопки запятой */
+QPushButton#comma {
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+QPushButton#comma:hover {
+    background-color: #f1f3f5;
+    border-color: #adb5bd;
+}
+/* Стиль строки меню (верхняя панель) */
+QMenuBar {
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px;
+    border: none;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+QMenuBar::item:selected { 
+    background-color: #e9ecef;
+    color: #2c3e50; 
+}
+
+QMenuBar::item:pressed {
+    background-color: #dee2e6;
+    color: #2c3e50;
+}
+
+QMenu {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 4px 0px;
+    font-size: 11px;
+}
+
+QMenu::item {
+    padding: 8px 24px;
+    border-radius: 6px;
+}
+
+QMenu::item:selected {  
+    background-color: #e9ecef;
+    color: #2c3e50; 
+}
+
+QMenu::item:pressed {
+    background-color: #dee2e6;
+    color: #2c3e50;
+}
+
+QMenu::separator {
+    height: 1px;
+    background: #e9ecef;
+    margin: 4px 0;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+min-width: 65;
+min-height: 40;
+max-width: 65;
+max-height: 40;
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="displayPanel">
+      <property name="minimumSize">
+       <size>
+        <width>290</width>
+        <height>97</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>97</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <kerning>true</kerning>
+        <fontweight>Medium</fontweight>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: 1 solid #b8b8b8;
+background-color: #fff;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignRight</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="actionClear">
+        <property name="styleSheet">
+         <string notr="true">/*background-color: #cb1a21;
+color: #ffffff;*/</string>
+        </property>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionDel">
+        <property name="text">
+         <string>Del</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionPercent">
+        <property name="text">
+         <string>%</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionDiv">
+        <property name="text">
+         <string>/</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">actionGroup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="num7">
+        <property name="text">
+         <string>7</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num8">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>8</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num9">
+        <property name="text">
+         <string>9</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionMul">
+        <property name="text">
+         <string>x</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">actionGroup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="num4">
+        <property name="text">
+         <string>4</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num5">
+        <property name="text">
+         <string>5</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num6">
+        <property name="text">
+         <string>6</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionMinus">
+        <property name="text">
+         <string>-</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">actionGroup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="num1">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>69</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>69</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>2</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="num3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>69</width>
+          <height>44</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>3</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionPlus">
+        <property name="text">
+         <string>+</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">actionGroup</string>
+        </attribute>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="num0">
+        <property name="text">
+         <string>0</string>
+        </property>
+        <attribute name="buttonGroup">
+         <string notr="true">numberGroup</string>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="comma">
+        <property name="text">
+         <string>.</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionSign">
+        <property name="text">
+         <string>+/-</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="actionCalc">
+        <property name="styleSheet">
+         <string notr="true">/*background-color: #3490cd;
+color: #ffffff;*/</string>
+        </property>
+        <property name="text">
+         <string>=</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>306</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="Menu">
+    <property name="title">
+     <string>Меню</string>
+    </property>
+    <addaction name="Save"/>
+   </widget>
+   <widget class="QMenu" name="History">
+    <property name="title">
+     <string>История</string>
+    </property>
+    <addaction name="ShowHistory"/>
+    <addaction name="HideHistory"/>
+   </widget>
+   <widget class="QMenu" name="Info">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+    <addaction name="About"/>
+   </widget>
+   <addaction name="Menu"/>
+   <addaction name="History"/>
+   <addaction name="Info"/>
+  </widget>
+  <action name="ShowHistory">
+   <property name="text">
+    <string>Показать</string>
+   </property>
+  </action>
+  <action name="HideHistory">
+   <property name="text">
+    <string>Скрыть</string>
+   </property>
+  </action>
+  <action name="Save">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
+  <action name="About">
+   <property name="text">
+    <string>О приложении</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+ <buttongroups>
+  <buttongroup name="actionGroup"/>
+  <buttongroup name="numberGroup"/>
+ </buttongroups>
+</ui>
